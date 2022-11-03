@@ -29,11 +29,11 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth -50, windowHeight - 50);
   engine = Engine.create();
   world = engine.world;
   pirata = Bodies.rectangle(100, height -175, 120, 150)
-  esqueleto = Bodies.rectangle(random(150, width), height -175, 120, 190)
+  esqueleto = Bodies.rectangle(random(150, width), height -205, 120, 190)
   
   }
 
@@ -44,6 +44,18 @@ function draw() {
   drawSprites();
   image(pirataAndandoIMG, pirata.position.x, pirata.position.y, 120, 150);
   image(esqueletoAndandoIMG, esqueleto.position.x, esqueleto.position.y, 120, 190);
-
+  
 }
 
+function keyPressed(){
+  if (keyCode===RIGHT_ARROW) {
+   pirata.position.x = pirata.position.x + 50;
+  }
+  if (keyCode===LEFT_ARROW) {
+    pirata.position.x = pirata.position.x - 50;
+   }
+   if (keyCode===UP_ARROW) {
+    image(pirataAtacando, pirata.position.x, pirata.position.y, 120, 150)
+    console.log("UP")
+   }
+}
