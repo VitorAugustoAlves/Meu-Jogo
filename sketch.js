@@ -52,6 +52,7 @@ function setup() {
     190
   );
   bau = createSprite(width-700, height-50,)
+  bau.addImage("bauFechado", bauFechado)
   bau.addAnimation("bau",bauA)
   bau.visible = false
   bau.scale = 4;
@@ -111,6 +112,10 @@ function draw() {
   if (esqueleto.position.x < -10&&esqueleto2.position.x < -10&&esqueleto3.position.x < -10){
     bau.visible = true
   }
+  if (collide(pirata, bau) === true){
+    bau.changeAnimation("bau")
+    console.log("bau")
+  }
 }
 
 function keyPressed() {
@@ -125,12 +130,12 @@ function keyPressed() {
     console.log("UP");
   }
 }
-function collide(body, esqueleto) {
+function collide(body, coisa) {
     var colisao = dist(
       body.position.x,
       body.position.y,
-      esqueleto.position.x,
-      esqueleto.position.y
+      coisa.position.x,
+      coisa.position.y
     );
     if (colisao <= 80) {
       
